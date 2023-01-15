@@ -1,0 +1,31 @@
+class Solution(object):
+    def isValid(self,s):
+    
+        def opp(ch):
+            if ch == '}':return '{'
+            elif ch == ')': return '('
+            else: return '['
+                
+        
+        if len(s) % 2 != 0:
+            print("Returned False")
+            return False
+        newArr = []
+        openers = ['(','{','[']
+        closers = [')','{',']']
+        for i in range(len(s)):
+            val = 0 if s[i] in openers else 1
+            if val == 0:
+                newArr.append(s[i])
+                
+            else:
+                if len(newArr) == 0: return False
+                if newArr[len(newArr)-1] != opp(s[i]):
+                    return False
+                for j in range(len(newArr)-1, -1, -1):
+                    if newArr[j] == opp(s[i]):
+                        newArr.pop(j)
+                        break
+                    
+        ret =  True if len(newArr) == 0 else False           
+        return ret
