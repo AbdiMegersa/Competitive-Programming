@@ -1,0 +1,26 @@
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        newStack = []
+        for i in s:
+            if i is not ')':
+                newStack.append(i)
+            else:
+                print('Spotted )')
+                j = len(newStack)-1
+                subString = []
+                while j >= 0:
+                    k = newStack[j]
+                    if k!='(':
+                        subString.append(newStack.pop())
+                    else:
+                        break
+                    j-=1
+                #poping out (
+                newStack.pop()
+                #then reverse the string in checkSTack
+                for i in subString:
+                    newStack.append(i)
+        mstr = ''
+        for i in newStack:
+            mstr+=str(i)
+        return mstr
