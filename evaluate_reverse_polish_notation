@@ -1,0 +1,26 @@
+import math
+class Solution:
+    def evalRPN(self, tokens: list[str]) -> int:
+        def compute(fir,sec,op):
+            if op == '+':
+                return fir + second
+            elif op=='*':
+                return fir * second
+            elif op=='/':
+                return int(fir / second)
+            else:
+                return fir - second
+            
+        newList = []
+        if len(tokens)==1:
+            print(tokens[0])
+            return int(tokens[0])
+        for i in tokens:
+            if i not in ['+','-','/','*']:
+                newList.append(i)
+            else:
+                second = int(newList.pop())
+                first = int(newList.pop())
+                res = compute(first, second,i)
+                newList.append(res)
+        return newList[0]
