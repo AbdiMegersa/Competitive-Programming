@@ -1,0 +1,19 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        ans = []
+        for i in nums1:
+            indexInTwo = nums2.index(i)
+            print("Found index of {} in nums2 the index is {}".format(i, indexInTwo))
+            found=False
+            for j in range(indexInTwo, len(nums2),1):
+                if nums2[j] > i:
+                    print("{} > {} so append to array".format(nums2[j],i))
+                    ans.append(nums2[j])
+                    print("Array after appending {}".format(ans))
+                    found=True
+                    break
+                
+            if found==False:
+                ans.append(-1)
+                print("Array after appending {}".format(ans))
+        return ans
