@@ -1,0 +1,24 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        sortedSentence = [None] * 9
+        word=""
+        for i in s:
+            if i.isdigit()==False:
+                if i!=" ":
+                    word+=i
+            else:
+                intVal = int(i)
+                sortedSentence[intVal-1] = word
+                word=""
+        final=[]
+        for i in sortedSentence:
+            if i != None:
+                final.append(i)
+        finalSen=""
+        for i in range(len(final)):
+            if i==(len(final)-1):
+                finalSen+=final[i]
+            else:
+                finalSen=finalSen+final[i]+" "
+            
+        return finalSen
