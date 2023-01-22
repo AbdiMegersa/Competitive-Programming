@@ -1,0 +1,50 @@
+from collections import deque
+class MyCircularDeque(object):
+
+    def __init__(self, k):
+        self.queue = deque()
+        self._size = k
+        
+
+    def insertFront(self, value):
+        if len(self.queue) == self._size:
+            return False
+        self.queue.append(value)
+        return True        
+
+    def insertLast(self, value):
+        if len(self.queue) == self._size:
+            return False
+        self.queue.appendleft(value)
+        return True
+
+    def deleteFront(self):
+        if len(self.queue) == 0:
+            return False
+        self.queue.pop()
+        return True
+        
+    def deleteLast(self):
+        if len(self.queue) == 0:
+            return False
+        self.queue.popleft()
+        return True
+        
+    def getFront(self):
+        if self.isEmpty():
+            return -1
+        return self.queue[-1]
+
+    def getRear(self):
+        if self.isEmpty():
+            return -1
+        return self.queue[0]
+
+    def isEmpty(self):
+        if len(self.queue) == 0:
+            return True
+        else:
+            return False
+       
+    def isFull(self):
+        return self._size == len(self.queue)
