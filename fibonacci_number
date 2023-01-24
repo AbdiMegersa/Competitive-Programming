@@ -1,0 +1,14 @@
+class Solution:
+    def fib(self, n: int) -> int:
+        first = 0
+        second = 1
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
+        while n > 1:
+            fib = first + second
+            first = second
+            second = fib
+            n-=1
+        return fib
