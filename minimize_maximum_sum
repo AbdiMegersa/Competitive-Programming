@@ -1,0 +1,14 @@
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        siz = len(nums)/2
+        i=0
+        stack=[0]
+        while nums:
+            x=nums.pop()
+            y=nums.pop(0)
+            if x+y>stack[-1]:
+                stack.pop()
+                stack.append(x+y)
+            siz-=1
+        return stack[-1]
